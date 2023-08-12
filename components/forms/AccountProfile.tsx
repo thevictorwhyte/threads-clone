@@ -1,5 +1,4 @@
 'use client';
-
 import {useForm} from 'react-hook-form';
 import {Button} from '@/components/ui/button';
 import {
@@ -33,10 +32,10 @@ const AccountProfile = ({user, btnTitle}: Props) => {
   const form = useForm<z.infer<typeof UserValidation>>({
     resolver: zodResolver(UserValidation),
     defaultValues: {
-      profile_photo: '',
-      name: '',
-      username: '',
-      bio: '',
+      profile_photo: user?.image || '',
+      name: user?.name || '',
+      username: user?.username || '',
+      bio: user?.bio || '',
     },
   });
 
@@ -81,7 +80,7 @@ const AccountProfile = ({user, btnTitle}: Props) => {
                   />
                 )}
               </FormLabel>
-              <FormControl className="">
+              <FormControl className="flex-1 text-base-semibold text-gray-200">
                 <Input
                   type="file"
                   accept="image/*"
@@ -101,7 +100,7 @@ const AccountProfile = ({user, btnTitle}: Props) => {
               <FormLabel className="text-base-semibold text-light-2">
                 Name
               </FormLabel>
-              <FormControl className="">
+              <FormControl className="flex-1 text-base-semibold text-gray-200">
                 <Input
                   type="text"
                   className="account-form_input no-focus"
@@ -119,7 +118,7 @@ const AccountProfile = ({user, btnTitle}: Props) => {
               <FormLabel className="text-base-semibold text-light-2">
                 Username
               </FormLabel>
-              <FormControl className="">
+              <FormControl className="flex-1 text-base-semibold text-gray-200">
                 <Input
                   type="text"
                   className="account-form_input no-focus"
@@ -133,7 +132,7 @@ const AccountProfile = ({user, btnTitle}: Props) => {
           control={form.control}
           name="bio"
           render={({field}) => (
-            <FormItem className="flex flex-col gap-3 w-full">
+            <FormItem className="flex flex-col gap-2 w-full">
               <FormLabel className="text-base-semibold text-light-2">
                 Bio
               </FormLabel>
