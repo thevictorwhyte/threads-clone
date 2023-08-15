@@ -26,7 +26,7 @@ export async function updateUser({
   try {
     await User.findOneAndUpdate(
       {id: userId},
-      {username: username.toLowerCase, name, bio, image, onboarded: true},
+      {username: username.toLowerCase(), name, bio, image, onboarded: true},
       {upsert: true},
     );
 
