@@ -45,7 +45,7 @@ export async function fetchThreads(pageNumber = 1, pageSize = 20) {
       .sort({createdAt: 'desc'})
       .skip(skipAmount)
       .limit(pageSize)
-      .populate({path: 'author', model: 'User'})
+      .populate({path: 'author', model: User})
       .populate({
         path: 'children',
         populate: {
@@ -78,7 +78,7 @@ export async function fetchThreadById(id: string) {
       .populate({
         path: 'author',
         model: User,
-        select: '_id name image',
+        select: '_id id name image',
       })
       .populate({
         path: 'children',
@@ -86,7 +86,7 @@ export async function fetchThreadById(id: string) {
           {
             path: 'author',
             model: User,
-            select: '_id name parentId image',
+            select: '_id id name parentId image',
           },
           {
             path: 'children',
