@@ -6,7 +6,7 @@ const communitySchema = new mongoose.Schema({
   name: {type: String, required: true},
   image: {type: String},
   bio: {type: String},
-  craetedBy: {
+  createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
